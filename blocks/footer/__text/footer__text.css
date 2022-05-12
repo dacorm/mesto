@@ -10,6 +10,6 @@
 
 @media screen and (max-width: 1023px) {
     .footer__text {
-        text-align: center;
+        text-align: start;
     }
 }
