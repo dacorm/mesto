@@ -13,3 +13,10 @@
         padding: 28px 0 0 0;
     }
 }
+
+@media screen and (max-width: 767px) {
+    .header {
+        justify-content: flex-end;
+        height: 56px;
+    }
+}
