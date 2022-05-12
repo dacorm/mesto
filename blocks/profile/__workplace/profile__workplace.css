@@ -1,0 +1,19 @@
+.profile__workplace {
+    max-width: 336px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    grid-column: -3 / -1;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .profile__workplace {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

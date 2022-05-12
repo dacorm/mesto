@@ -1,0 +1,14 @@
+.profile__edit-button {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #FFFFFF;
+    background-image: url("../../../images/edit.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+}

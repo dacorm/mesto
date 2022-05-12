@@ -1,0 +1,15 @@
+.header {
+    padding: 45px 200px 0 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% - 400px);
+    height: 74px;
+}
+
+@media screen and (max-width: 1023px) {
+    .header {
+        width: 100%;
+        padding: 28px 0 0 0;
+    }
+}
