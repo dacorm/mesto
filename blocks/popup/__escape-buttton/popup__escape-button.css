@@ -15,3 +15,12 @@
     opacity: 0.6;
     cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+    .popup__escape-button {
+        width: 20px;
+        height: 20px;
+        top: -51px;
+        right: 0;
+    }
+}

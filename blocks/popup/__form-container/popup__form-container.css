@@ -11,3 +11,11 @@
     border-radius: 10px;
     position: relative;
 }
+
+@media screen and (max-width: 767px) {
+    .popup__form-container {
+        width: calc(100% - (19px + 19px));
+
+    }
+
+}

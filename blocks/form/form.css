@@ -3,3 +3,9 @@
     margin: 0;
     padding: 0 36px 0 36px;
 }
+
+@media screen and (max-width: 767px) {
+    .form {
+        padding: 0 22px 0 22px;
+    }
+}
