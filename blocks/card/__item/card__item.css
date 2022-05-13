@@ -1,4 +1,4 @@
-.photo__item {
+.card__item {
     display: flex;
     flex-direction: column;
     height: 361px;

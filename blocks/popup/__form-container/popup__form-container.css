@@ -1,0 +1,13 @@
+.popup__form-container {
+    box-sizing: border-box;
+    max-width: 430px;
+    height: 330px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin: 195px auto auto auto;
+    align-items: center;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    position: relative;
+}

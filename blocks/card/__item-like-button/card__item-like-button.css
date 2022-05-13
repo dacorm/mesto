@@ -1,0 +1,10 @@
+.card__item-like-button {
+    max-width: 22px;
+    margin: 0;
+    padding-right: 30px;
+}
+
+.card__item-like-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

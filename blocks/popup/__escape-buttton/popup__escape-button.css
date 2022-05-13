@@ -1,0 +1,17 @@
+.popup__escape-button {
+    width: 32px;
+    height: 32px;
+    background-color: rgba(0, 0, 0, .1);
+    border: 0;
+    background-image: url("../../../images/Close Icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: -35px;
+    right: -35px;
+}
+
+.popup__escape-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
