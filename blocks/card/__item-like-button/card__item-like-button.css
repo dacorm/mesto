@@ -1,7 +1,12 @@
 .card__item-like-button {
     max-width: 22px;
+    height: 19px;
     margin: 0;
-    padding-right: 30px;
+    padding: 0 51px 0 0;
+    background-image: url("../../../images/like.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
 }
 
 .card__item-like-button:hover {
