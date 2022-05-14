@@ -7,7 +7,7 @@
     margin: 0 0 30px 0;
     padding: 0 0 14px 0;
     font-style: normal;
-    font-weight: 900;
+    font-weight: 400;
     font-size: 24px;
     line-height: 29px;
 }
@@ -18,7 +18,7 @@
 
 .form__input::target-text {
     font-style: normal;
-    font-weight: 900;
+    font-weight: 400;
     font-size: 24px;
     line-height: 29px;
 }
