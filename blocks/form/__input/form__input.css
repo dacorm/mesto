@@ -20,7 +20,6 @@
 }
 
 .form__input::placeholder {
-    padding-top: 14px;
     max-width: 358px;
     font-style: normal;
     font-weight: 400;
