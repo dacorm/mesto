@@ -1,16 +1,18 @@
 .header {
-    padding: 45px 200px 0 200px;
+    margin: 45px 200px 0 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: calc(100% - 400px);
+    width: calc(100% - 402px);
     height: 74px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 1023px) {
     .header {
         width: 100%;
         padding: 28px 0 0 0;
+        margin: 0;
     }
 }
 

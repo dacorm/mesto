@@ -13,3 +13,9 @@
         text-align: start;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .footer__text {
+        font-size: 14px;
+    }
+}

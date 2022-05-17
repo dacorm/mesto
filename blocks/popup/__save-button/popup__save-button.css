@@ -5,6 +5,7 @@
     border-radius: 2px;
     margin: 48px 36px 37px 36px;
     color: #FFFFFF;
+    border: rgba(0, 0, 0, 0);
 }
 
 .popup__save-button:hover {
@@ -16,5 +17,7 @@
     .popup__save-button {
         width: calc(100% - 44px);
         margin: 45px 22px 25px 22px;
+        height: 46px;
+        font-size: 14px;
     }
 }
