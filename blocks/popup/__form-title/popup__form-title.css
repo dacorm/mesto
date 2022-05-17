@@ -14,6 +14,7 @@
         width: calc(100% - 44px);
         font-size: 18px;
         line-height: 22px;
+        margin-top: 25px;
         margin-left: 22px;
         padding-bottom: 75px;
     }

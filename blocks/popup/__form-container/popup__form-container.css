@@ -1,7 +1,6 @@
 .popup__form-container {
     box-sizing: border-box;
     max-width: 430px;
-    height: 330px;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
