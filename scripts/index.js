@@ -59,8 +59,6 @@ function fillPlace(i) {
 }
 
 
-
-
 function open(element) {
     element.classList.add('popup_active');
     nameInput.value = profileName.textContent;
@@ -79,10 +77,22 @@ function formSubmitHandler(evt) {
     close(popupProfile);
 }
 
-function formSubmitHandlerPlace(evt) {
+function formSubmitPlace(evt) {
     evt.preventDefault();
-    close(popupProfile);
+    const cardTemplate = document.querySelector('#card').content;
+    const card = cardTemplate.querySelector('.card__item').cloneNode(true);
+
+    card.querySelector('.card__item-image').src = placeImageInput.value;
+    card.querySelector('.card__item-title').textContent = placeInput.value;
+    card.querySelector('.card__item-like-button').addEventListener('click', (event) => {
+        const evtTarget = event.target;
+        evtTarget.classList.toggle('card__item-like-button_active');
+    })
+    cardItems.append(card);
+
+    close(popupPlace);
 }
+
 
 popupOpened.addEventListener('click', () => {
     open(popupProfile);
@@ -97,3 +107,4 @@ placeAddButton.addEventListener('click', () => {
     open(popupPlace);
 });
 formElement.addEventListener('submit', formSubmitHandler);
+placeForm.addEventListener('submit', formSubmitPlace);
