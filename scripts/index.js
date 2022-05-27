@@ -6,7 +6,14 @@ const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#workplace');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__workplace');
+const likes = document.querySelectorAll('.card__item-like-button')
 
+
+for (const like of likes) {
+    like.addEventListener('click', () => {
+        like.classList.toggle('card__item-like-button_active');
+    });
+}
 
 function open() {
     popup.classList.add('popup_active');

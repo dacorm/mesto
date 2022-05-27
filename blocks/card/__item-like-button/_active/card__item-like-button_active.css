@@ -7,7 +7,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     border: 0;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
 }
 
 .card__item-like-button:hover {
