@@ -26,7 +26,7 @@
     </section>
     <section class="card">
         <ul class="card__items">
-            <li class="card__item">
+           <!-- <li class="card__item">
                 <img src="./images/kirill-pershin-1404681-unsplash%20(1).png" alt="Эльбрус"
                      class="card__item-image">
                 <div class="card__item-description">
@@ -73,16 +73,16 @@
                     <h2 class="card__item-title">Карачаевооооооооооо</h2>
                     <button class="card__item-like-button" type="button"></button>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </section>
     <footer class="footer">
         <p class="footer__text">&COPY; 2022 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="popup_profile">
         <div class="popup__form-container">
-            <button class="popup__escape-button" type="button"></button>
-            <form class="popup__form" name="form">
+            <button class="popup__escape-button" type="button" id="edit_close"></button>
+            <form class="popup__form" name="form" id="profile_form">
                 <h2 class="popup__form-title">Редактировать профиль</h2>
                 <fieldset class="form">
                     <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="name" name="name">
@@ -92,7 +92,30 @@
             </form>
         </div>
     </div>
+    <div class="popup" id="popup_place">
+        <div class="popup__form-container">
+            <button class="popup__escape-button" id="place_close" type="button"></button>
+            <form class="popup__form" name="form" id="place_form">
+                <h2 class="popup__form-title">Новое место</h2>
+                <fieldset class="form">
+                    <input type="text" class="form__input" placeholder="Название" id="new_place" name="name">
+                    <input type="text" class="form__input" placeholder="Ссылка на картинку" id="place_link" name="workplace">
+                </fieldset>
+                <button class="popup__save-button" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </div>
 </div>
+<template id="card">
+    <li class="card__item">
+        <img src="./images/kirill-pershin-1404681-unsplash%20(1).png" alt="Эльбрус"
+             class="card__item-image">
+        <div class="card__item-description">
+            <h2 class="card__item-title">Гора Эльбрус</h2>
+            <button class="card__item-like-button" type="button"></button>
+        </div>
+    </li>
+</template>
 <script src="scripts/index.js"></script>
 </body>
 </html>
