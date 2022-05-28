@@ -82,54 +82,61 @@ function removeCard(event) {
 }
 
 function cardOpen(title, src) {
-    open(popupImage);
+    openPopup(popupImage);
     popupImageSrc.src = src;
     popupImageTitle.textContent = title;
     popupImageSrc.alt = title;
 }
 
 
-function open(element) {
+function openPopup(element) {
     element.classList.add('popup_active');
+}
+
+function renderProfilePopupInputs() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
 
-function close(element) {
+function closePopup(element) {
     element.classList.remove('popup_active');
 }
 
 
-function formSubmitHandler(evt) {
+function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    close(popupProfile);
+    closePopup(popupProfile);
 }
 
+function renderPlacePopupInputs() {
+    placeInput.value = '';
+    placeImageInput.value = '';
+}
 
-function formSubmitPlace(evt) {
+function submitPlaceForm(evt) {
     evt.preventDefault();
     fillCard(placeInput.value, placeImageInput.value);
     renderCard(cardFullItem, cardItems);
-    close(popupPlace);
+    closePopup(popupPlace);
 }
 
-
 popupProfileOpenButton.addEventListener('click', () => {
-    open(popupProfile);
+    openPopup(popupProfile);
 });
 popupProfileCloseButton.addEventListener('click', () => {
-    close(popupProfile)
+    closePopup(popupProfile)
 });
 popupPlaceCloseButton.addEventListener('click', () => {
-    close(popupPlace)
+    closePopup(popupPlace)
 });
 placeAddButton.addEventListener('click', () => {
-    open(popupPlace);
+    openPopup(popupPlace);
+    renderPlacePopupInputs();
 });
 imageCloseButton.addEventListener('click', () => {
-    close(popupImage);
+    closePopup(popupImage);
 })
-formProfileElement.addEventListener('submit', formSubmitHandler);
-placeForm.addEventListener('submit', formSubmitPlace);
+formProfileElement.addEventListener('submit', submitProfileForm);
+placeForm.addEventListener('submit', submitPlaceForm, renderProfilePopupInputs);
