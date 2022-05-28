@@ -47,7 +47,7 @@ const initialCards = [
 
 
 for (let i = 0; i < initialCards.length; i++) {
-    fillCard(initialCards[i].name, initialCards[i].link);
+    cardFullItem = fillCard(initialCards[i].name, initialCards[i].link);
     renderCard(cardFullItem, cardItems);
 }
 
@@ -63,7 +63,7 @@ function fillCard(title, src) {
     });
     card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
     card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
-    return cardFullItem = card;
+    return card;
 }
 
 
@@ -117,7 +117,7 @@ function renderPlacePopupInputs() {
 
 function submitPlaceForm(evt) {
     evt.preventDefault();
-    fillCard(placeInput.value, placeImageInput.value);
+    cardFullItem = fillCard(placeInput.value, placeImageInput.value);
     renderCard(cardFullItem, cardItems);
     closePopup(popupPlace);
 }
