@@ -1,0 +1,12 @@
+.card__item-thrash {
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.card__item-thrash:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

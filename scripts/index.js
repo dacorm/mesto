@@ -42,20 +42,39 @@ const initialCards = [
 
 
 for (let i = 0; i < initialCards.length; i++) {
-    fillPlace(i);
+    fillCard(initialCards[i].name, initialCards[i].link);
 }
 
-function fillPlace(i) {
+function fillCard(title, src) {
     const cardTemplate = document.querySelector('#card').content;
     const card = cardTemplate.querySelector('.card__item').cloneNode(true);
 
-    card.querySelector('.card__item-image').src = `${initialCards[i].link}`;
-    card.querySelector('.card__item-title').textContent = `${initialCards[i].name}`;
-    card.querySelector('.card__item-like-button').addEventListener('click', (event) => {
-        const evtTarget = event.target;
-        evtTarget.classList.toggle('card__item-like-button_active');
-    })
-    cardItems.append(card);
+    card.querySelector('.card__item-image').src = src;
+    card.querySelector('.card__item-title').textContent = title;
+    card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
+    card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
+    cardItems.prepend(card);
+}
+
+// function fillPlace(i) {
+//    const cardTemplate = document.querySelector('#card').content;
+//   const card = cardTemplate.querySelector('.card__item').cloneNode(true);
+//
+//  card.querySelector('.card__item-image').src = `${initialCards[i].link}`;
+//   card.querySelector('.card__item-title').textContent = `${initialCards[i].name}`;
+//   card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
+//   card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
+//   cardItems.prepend(card);
+//}
+
+function likeCard(event) {
+    const evtTarget = event.target;
+    evtTarget.classList.toggle('card__item-like-button_active');
+}
+
+function removeCard(event) {
+    const evtTarget = event.target;
+    evtTarget.closest('.card__item').remove();
 }
 
 
@@ -77,19 +96,10 @@ function formSubmitHandler(evt) {
     close(popupProfile);
 }
 
+
 function formSubmitPlace(evt) {
     evt.preventDefault();
-    const cardTemplate = document.querySelector('#card').content;
-    const card = cardTemplate.querySelector('.card__item').cloneNode(true);
-
-    card.querySelector('.card__item-image').src = placeImageInput.value;
-    card.querySelector('.card__item-title').textContent = placeInput.value;
-    card.querySelector('.card__item-like-button').addEventListener('click', (event) => {
-        const evtTarget = event.target;
-        evtTarget.classList.toggle('card__item-like-button_active');
-    })
-    cardItems.append(card);
-
+    fillCard(placeInput.value, placeImageInput.value);
     close(popupPlace);
 }
 

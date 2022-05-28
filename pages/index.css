@@ -19,6 +19,7 @@
 @import url(../blocks/card/__item-like-button/card__item-like-button.css);
 @import url(../blocks/card/__item-like-button/_active/card__item-like-button_active.css);
 @import url(../blocks/card/__item-title/card__item-title.css);
+@import url(../blocks/card/__item-thrash/card__item-thrash.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/form/form.css);
