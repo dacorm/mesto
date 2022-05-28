@@ -46,18 +46,18 @@ const initialCards = [
 
 
 for (let i = 0; i < initialCards.length; i++) {
-    fillCard(initialCards[i].name, initialCards[i].link);
+    fillCard(i);
 }
 
-function fillCard(title, src) {
+function fillCard(i) {
     const cardTemplate = document.querySelector('#card').content;
     const card = cardTemplate.querySelector('.card__item').cloneNode(true);
 
-    card.querySelector('.card__item-image').src = src;
-    card.querySelector('.card__item-image').alt = title;
-    card.querySelector('.card__item-title').textContent = title;
+    card.querySelector('.card__item-image').src = initialCards[i].link;
+    card.querySelector('.card__item-image').alt = initialCards[i].name;
+    card.querySelector('.card__item-title').textContent = initialCards[i].name;
     card.querySelector('.card__item-image').addEventListener('click', () => {
-        cardOpen(title, src);
+        cardOpen(initialCards[i].name, initialCards[i].link);
     });
     card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
     card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
@@ -101,10 +101,24 @@ function formSubmitHandler(evt) {
     close(popupProfile);
 }
 
+function addCard() {
+    const cardTemplate = document.querySelector('#card').content;
+    const card = cardTemplate.querySelector('.card__item').cloneNode(true);
+
+    card.querySelector('.card__item-image').src = placeImageInput.value;
+    card.querySelector('.card__item-image').alt = placeInput.value;
+    card.querySelector('.card__item-title').textContent = placeInput.value;
+    card.querySelector('.card__item-image').addEventListener('click', () => {
+        cardOpen(placeInput.value, placeImageInput.value);
+    });
+    card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
+    card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
+    cardItems.prepend(card);
+}
 
 function formSubmitPlace(evt) {
     evt.preventDefault();
-    fillCard(placeInput.value, placeImageInput.value);
+    addCard()
     close(popupPlace);
 }
 
