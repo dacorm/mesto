@@ -1,0 +1,10 @@
+.popup__image-description {
+    max-width: 291px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FFFFFF;
+    text-align: left;
+    margin: 10px 0 0 0;
+}

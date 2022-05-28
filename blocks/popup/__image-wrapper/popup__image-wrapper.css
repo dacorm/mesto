@@ -1,0 +1,14 @@
+.popup__image-wrapper {
+    max-width: 800px;
+    max-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    margin: 90px auto 90px auto;
+    position: relative;
+}
+
+@media screen and (max-width: 1023px) {
+    .popup__image-wrapper {
+        width: 75vw;
+    }
+}

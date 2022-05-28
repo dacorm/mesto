@@ -13,6 +13,10 @@ const placeAddButton = document.querySelector('.profile__add-button');
 const popupPlace = document.querySelector('#popup_place');
 const placeClose = document.querySelector('#place_close');
 const cardItems = document.querySelector('.card__items');
+const imageClose = document.querySelector('#image_close');
+const popupImage = document.querySelector('#popup_image');
+const popupImageSrc = document.querySelector('.popup__image');
+const popupImageTitle = document.querySelector('.popup__image-description');
 const initialCards = [
     {
         name: 'Архыз',
@@ -50,22 +54,16 @@ function fillCard(title, src) {
     const card = cardTemplate.querySelector('.card__item').cloneNode(true);
 
     card.querySelector('.card__item-image').src = src;
+    card.querySelector('.card__item-image').alt = title;
     card.querySelector('.card__item-title').textContent = title;
+    card.querySelector('.card__item-image').addEventListener('click', () => {
+        cardOpen(title, src);
+    });
     card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
     card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
     cardItems.prepend(card);
 }
 
-// function fillPlace(i) {
-//    const cardTemplate = document.querySelector('#card').content;
-//   const card = cardTemplate.querySelector('.card__item').cloneNode(true);
-//
-//  card.querySelector('.card__item-image').src = `${initialCards[i].link}`;
-//   card.querySelector('.card__item-title').textContent = `${initialCards[i].name}`;
-//   card.querySelector('.card__item-like-button').addEventListener('click', likeCard);
-//   card.querySelector('.card__item-thrash').addEventListener('click', removeCard);
-//   cardItems.prepend(card);
-//}
 
 function likeCard(event) {
     const evtTarget = event.target;
@@ -75,6 +73,13 @@ function likeCard(event) {
 function removeCard(event) {
     const evtTarget = event.target;
     evtTarget.closest('.card__item').remove();
+}
+
+function cardOpen(title, src) {
+    open(popupImage);
+    popupImageSrc.src = src;
+    popupImageTitle.textContent = title;
+    popupImageSrc.alt = title;
 }
 
 
@@ -116,5 +121,8 @@ placeClose.addEventListener('click', () => {
 placeAddButton.addEventListener('click', () => {
     open(popupPlace);
 });
+imageClose.addEventListener('click', () => {
+    close(popupImage);
+})
 formElement.addEventListener('submit', formSubmitHandler);
 placeForm.addEventListener('submit', formSubmitPlace);
