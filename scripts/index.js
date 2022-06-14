@@ -6,8 +6,8 @@ const nameInput = document.querySelector('#name');
 const jobInput = document.querySelector('#workplace');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__workplace');
-const placeInput = document.querySelector('#new_place');
-const placeImageInput = document.querySelector('#place_link');
+const placeInput = document.querySelector('#newplace');
+const placeImageInput = document.querySelector('#placelink');
 const placeForm = document.querySelector('#place_form');
 const placeAddButton = document.querySelector('.profile__add-button');
 const popupPlace = document.querySelector('#popup_place');
@@ -163,6 +163,6 @@ imageCloseButton.addEventListener('click', () => {
 })
 formProfileElement.addEventListener('submit', submitProfileForm);
 placeForm.addEventListener('submit', submitPlaceForm, renderProfilePopupInputs);
-popupOverlays.forEach((popupEl) => popupEl.addEventListener('mousedown', () => {
-    closePopup(popupEl);
+popupOverlays.forEach((popupEl) => popupEl.addEventListener('mousedown', (evt) => {
+    closePopup(evt.target);
 }))
