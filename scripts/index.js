@@ -141,20 +141,12 @@ const closePopupWithEsc = (evt) => {
     }
 }
 
-const removeInputErrors = (popup) => {
-    const inputList = Array.from(popup.querySelectorAll(validation.inputSelector));
-
-    inputList.forEach((inputElement) => {
-        hideInputError(popup, inputElement, validation);
-    })
-}
-
-
 
 popupProfileOpenButton.addEventListener('click', () => {
     openPopup(popupProfile);
     renderProfilePopupInputs();
     removeInputErrors(popupProfile);
+    setActiveBtn(profileSubmitBtn, validation);
 });
 popupProfileCloseButton.addEventListener('click', () => {
     closePopup(popupProfile)

@@ -22,6 +22,14 @@ const hideInputError = (formElement, inputElement, validation) => {
     errorElement.textContent = '';
 };
 
+const removeInputErrors = (popup) => {
+    const inputList = Array.from(popup.querySelectorAll(validation.inputSelector));
+
+    inputList.forEach((inputElement) => {
+        hideInputError(popup, inputElement, validation);
+    })
+}
+
 const enableValidation = (validation) => {
     const formList = Array.from(document.querySelectorAll(validation.formSelector));
     formList.forEach((formElement) => {
