@@ -34,13 +34,19 @@
     <div class="popup" id="popup_profile">
         <div class="popup__form-container">
             <button class="popup__escape-button" type="button" id="edit_close"></button>
-            <form class="popup__form" name="profile_form" id="profile_form">
+            <form class="popup__form" name="profile_form" id="profile_form" novalidate>
                 <h2 class="popup__form-title">Редактировать профиль</h2>
                 <fieldset class="form">
+                    <label class="form__input-label">
                     <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="name"
-                           name="name">
+                           name="name" minlength="2" maxlength="40" required>
+                    <span class="form__input-error name-error"></span>
+                    </label>
+                    <label class="form__input-label">
                     <input type="text" class="form__input" placeholder="Место работы" value="Исследователь океана"
-                           id="workplace" name="workplace">
+                           id="workplace" name="workplace" minlength="2" maxlength="200" required>
+                    <span class="form__input-error workplace-error"></span>
+                    </label>
                 </fieldset>
                 <button class="popup__save-button" type="submit">Сохранить</button>
             </form>
@@ -49,20 +55,28 @@
     <div class="popup" id="popup_place">
         <div class="popup__form-container">
             <button class="popup__escape-button" id="place_close" type="button"></button>
-            <form class="popup__form" name="place_form" id="place_form">
+            <form class="popup__form" name="place_form" id="place_form" novalidate>
                 <h2 class="popup__form-title">Новое место</h2>
                 <fieldset class="form">
-                    <input type="text" class="form__input" placeholder="Название" id="new_place" name="name">
+                    <label class="form__input-label">
+                    <input type="text" class="form__input" placeholder="Название" id="new_place" name="new_place"
+                           minlength="2" maxlength="30" required>
+                    <span class="form__input-error new_place-error"></span>
+                    </label>
+                    <label class="form__input-label">
                     <input type="url" class="form__input" placeholder="Ссылка на картинку" id="place_link"
-                           name="workplace">
+                           name="place_link" required>
+                    <span class="form__input-error place_link-error"></span>
+                    </label>
                 </fieldset>
-                <button class="popup__save-button" type="submit">Сохранить</button>
+                <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Сохранить</button>
             </form>
         </div>
     </div>
     <div class="popup popup_image" id="popup_image">
         <div class="popup__image-wrapper">
-            <button class="popup__escape-button popup__escape-button_place_image" id="image_close" type="button"></button>
+            <button class="popup__escape-button popup__escape-button_place_image" id="image_close"
+                    type="button"></button>
             <img src="#" alt="" class="popup__image">
             <h3 class="popup__image-description"></h3>
         </div>
@@ -79,6 +93,7 @@
         </div>
     </li>
 </template>
-<script src="scripts/index.js"></script>
+<script src="./scripts/index.js"></script>
+<script src="./scripts/validate.js"></script>
 </body>
 </html>
