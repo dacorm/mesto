@@ -125,7 +125,7 @@ function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    // setInactiveBtn(placeSubmitBtn, validation);
+    setInactiveBtn(profileSubmitBtn, validation);
     closePopup(popupProfile);
 }
 
@@ -134,11 +134,22 @@ function renderPlacePopupInputs() {
     placeImageInput.value = '';
 }
 
+const setInactiveBtn = (buttonElement, validation) => {
+    buttonElement.classList.add(validation.inactiveBtn);
+    buttonElement.setAttribute('disabled', true);
+}
+
+const setActiveBtn = (buttonElement, validation) => {
+    buttonElement.classList.remove(validation.inactiveBtn);
+    buttonElement.removeAttribute('disabled', true);
+}
+
 function submitPlaceForm(evt) {
     evt.preventDefault();
     cardFullItem = fillCard(placeInput.value, placeImageInput.value);
     renderCard(cardFullItem, cardItems);
-    // setInactiveBtn(placeSubmitBtn, validation);
+    addFormValidation.hideAllErrors();
+    setInactiveBtn(placeSubmitBtn, validation);
     closePopup(popupPlace);
 }
 
@@ -152,6 +163,7 @@ popupProfileOpenButton.addEventListener('click', () => {
     openPopup(popupProfile);
     renderProfilePopupInputs();
     editFormValidation.hideAllErrors();
+    setInactiveBtn(profileSubmitBtn, validation)
 });
 popupProfileCloseButton.addEventListener('click', () => {
     closePopup(popupProfile)
@@ -162,6 +174,7 @@ popupPlaceCloseButton.addEventListener('click', () => {
 placeAddButton.addEventListener('click', () => {
     openPopup(popupPlace);
     renderPlacePopupInputs();
+    addFormValidation.hideAllErrors();
 });
 imageCloseButton.addEventListener('click', () => {
     closePopup(popupImage);
