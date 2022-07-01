@@ -62,12 +62,12 @@ const initialCards = [
 
 
 initialCards.forEach((item) => {
-    const cardItem = createCard(item.name, item.link);
+    const cardItem = createCard(item);
     cardItems.prepend(cardItem);
 })
 
-function createCard(name, link) {
-    const card = new Card(name, link, '#card', openCard);
+function createCard(data) {
+    const card = new Card(data, '#card', openCard);
 
     const cardElement = card.generateCard();
 
@@ -116,7 +116,12 @@ function renderPlacePopupInputs() {
 
 function submitPlaceForm(evt) {
     evt.preventDefault();
-    const cardItem = createCard(placeInput.value, placeImageInput.value);
+    const cardData = {
+        name: placeInput.value,
+        link: placeImageInput.value,
+    };
+
+    const cardItem = createCard(cardData);
     renderCard(cardItem, cardItems);
     addFormValidation.hideAllErrors();
     closePopup(popupPlace);
