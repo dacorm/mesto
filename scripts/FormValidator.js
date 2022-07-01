@@ -10,27 +10,25 @@ export class FormValidator {
     }
 
     _setEventListeners() {
-        const buttonElement = this._form.querySelector(this._button);
+       this._buttonElement = this._form.querySelector(this._button);
 
-        this._toggleButtonState(buttonElement);
+        this._toggleButtonState();
 
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
                 this._checkInputValidity(inputElement);
-                this._toggleButtonState(buttonElement);
+                this._toggleButtonState();
             });
         });
     }
 
     hideAllErrors() {
-        this._toggleButtonState(this._form.querySelector(this._button));
+        this._toggleButtonState(this._buttonElement);
 
         this._inputList.forEach((input) => {
-            this._errorElement = this._form.querySelector(`.${input.id}-error`);
-            this._errorElement.classList.remove(this._errorClass);
-            this._errorElement.textContent = '';
-            input.classList.remove(this._inputErrorClass);
+           this._errorElement = this._form.querySelector(`.${input.id}-error`);
+           this._hideInputError(input);
         })
     }
 
@@ -59,13 +57,13 @@ export class FormValidator {
         return this._inputList.some((input) => !input.validity.valid);
     }
 
-    _toggleButtonState(buttonElement) {
+    _toggleButtonState() {
         if (this._validateInput()) {
-            buttonElement.classList.add(this._inactiveBtn);
-            buttonElement.setAttribute('disabled', true);
+            this._buttonElement.classList.add(this._inactiveBtn);
+            this._buttonElement.setAttribute('disabled', true);
         } else {
-            buttonElement.classList.remove(this._inactiveBtn);
-            buttonElement.removeAttribute('disabled', true);
+            this._buttonElement.classList.remove(this._inactiveBtn);
+            this._buttonElement.removeAttribute('disabled', true);
         }
     }
 

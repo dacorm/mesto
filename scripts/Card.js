@@ -1,10 +1,9 @@
-import { cardOpen } from './index.js'
-
 export class Card {
-    constructor(data, selector) {
-        this._title = data.name;
-        this._image = data.link;
+    constructor(name, link, selector, openCard) {
+        this._title = name;
+        this._image = link;
         this._selector = selector;
+        this._openCard = openCard;
     }
 
     _getElement() {
@@ -19,7 +18,9 @@ export class Card {
 
     generateCard() {
         this._element = this._getElement();
-        this._element.querySelector('.card__item-image').src = this._image;
+        this._imageElement = this._element.querySelector('.card__item-image');
+        this._imageElement.src = this._image;
+        this._imageElement.alt = this._title;
         this._element.querySelector('.card__item-title').textContent = this._title;
 
         this._setEventListeners();
@@ -28,11 +29,12 @@ export class Card {
     }
 
     _setEventListeners() {
+        this._likeButton = this._element.querySelector('.card__item-like-button');
         this._element.querySelector('.card__item-image').addEventListener('click', () => {
-            this._handleImageClick();
+            this._openCard(this._title, this._image);
         });
 
-        this._element.querySelector('.card__item-like-button').addEventListener('click', () => {
+        this._likeButton.addEventListener('click', () => {
             this._handleLikeCLick();
         });
 
@@ -41,12 +43,9 @@ export class Card {
         });
     }
 
-    _handleImageClick() {
-        cardOpen(this._title, this._image);
-    }
 
     _handleLikeCLick() {
-        this._element.querySelector('.card__item-like-button').classList.toggle('card__item-like-button_active');
+        this._likeButton.classList.toggle('card__item-like-button_active');
     }
 
     _handleDeleteClick() {
