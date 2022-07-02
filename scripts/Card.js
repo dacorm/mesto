@@ -30,7 +30,7 @@ export class Card {
 
     _setEventListeners() {
         this._likeButton = this._element.querySelector('.card__item-like-button');
-        this._element.querySelector('.card__item-image').addEventListener('click', () => {
+        this._imageElement.addEventListener('click', () => {
             this._openCard(this._title, this._image);
         });
 

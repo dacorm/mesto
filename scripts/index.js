@@ -123,7 +123,6 @@ function submitPlaceForm(evt) {
 
     const cardItem = createCard(cardData);
     renderCard(cardItem, cardItems);
-    addFormValidation.hideAllErrors();
     closePopup(popupPlace);
 }
 
