@@ -29,6 +29,7 @@ import {
 } from '../utils/variables.js'
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const createCards = new Section({
     items: initialCards,
@@ -53,78 +54,70 @@ function openCard(title, src) {
     imagePopup.open(title, src)
 }
 
-export function openPopup(element) {
-    element.classList.add('popup_active');
-    document.addEventListener('keydown', closePopupWithEsc);
-}
+// export function openPopup(element) {
+//     element.classList.add('popup_active');
+//     document.addEventListener('keydown', closePopupWithEsc);
+// }
 
 function renderProfilePopupInputs() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
 
-function closePopup(element) {
-    element.classList.remove('popup_active');
-    document.removeEventListener('keydown', closePopupWithEsc);
-}
+// function closePopup(element) {
+//     element.classList.remove('popup_active');
+//     document.removeEventListener('keydown', closePopupWithEsc);
+// }
 
 
-function submitProfileForm(evt) {
-    evt.preventDefault();
+function submitProfileForm() {
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(popupProfile);
+
 }
 
 function renderPlacePopupInputs() {
     placeInput.value = '';
     placeImageInput.value = '';
+    popupEdit.close()
 }
 
-function submitPlaceForm(evt) {
-    evt.preventDefault();
-    const cardData = {
-        name: placeInput.value,
-        link: placeImageInput.value,
-    };
-
-    const cardItem = createCard(cardData);
-    renderCard(cardItem, cardItems);
-    closePopup(popupPlace);
+function submitPlaceForm(data) {
+    const card = createCard(data)
+    createCards.addItem(card);
+    popupAdd.close();
 }
 
-const closePopupWithEsc = (evt) => {
-    if (evt.key === 'Escape') {
-        closePopup(document.querySelector('.popup_active'))
-    }
-}
+// const closePopupWithEsc = (evt) => {
+//     if (evt.key === 'Escape') {
+//         closePopup(document.querySelector('.popup_active'))
+//     }
+// }
 
 popupProfileOpenButton.addEventListener('click', () => {
-    openPopup(popupProfile);
+    popupEdit.open();
     renderProfilePopupInputs();
     editFormValidation.hideAllErrors();
 });
-popupProfileCloseButton.addEventListener('click', () => {
-    closePopup(popupProfile)
-});
-popupPlaceCloseButton.addEventListener('click', () => {
-    closePopup(popupPlace)
-});
+// popupProfileCloseButton.addEventListener('click', () => {
+//     closePopup(popupProfile)
+// });
 placeAddButton.addEventListener('click', () => {
-    openPopup(popupPlace);
+    popupAdd.open();
     renderPlacePopupInputs();
     addFormValidation.hideAllErrors();
 });
-imageCloseButton.addEventListener('click', () => {
-    closePopup(popupImage);
-})
-formProfileElement.addEventListener('submit', submitProfileForm);
-placeForm.addEventListener('submit', submitPlaceForm);
-popupOverlays.forEach((popupEl) => popupEl.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_active')) {
-        closePopup(evt.target);
-    }
-}))
+
+// imageCloseButton.addEventListener('click', () => {
+//     closePopup(popupImage);
+// })
+// formProfileElement.addEventListener('submit', submitProfileForm);
+// placeForm.addEventListener('submit', submitPlaceForm);
+// popupOverlays.forEach((popupEl) => popupEl.addEventListener('mousedown', (evt) => {
+//     if (evt.target.classList.contains('popup_active')) {
+//         closePopup(evt.target);
+//     }
+// }))
 
 const editFormValidation = new FormValidator(formProfileElement, validation);
 editFormValidation.enableValidaton();
@@ -132,3 +125,8 @@ const addFormValidation = new FormValidator(placeForm, validation);
 addFormValidation.enableValidaton();
 const imagePopup = new PopupWithImage(popupImage);
 imagePopup.setEventListeners();
+const popupAdd = new PopupWithForm(popupPlace, submitPlaceForm)
+popupAdd.setEventListeners();
+const popupEdit = new PopupWithForm(popupProfile, submitProfileForm)
+popupEdit.setEventListeners();
+
