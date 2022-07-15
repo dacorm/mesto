@@ -30,6 +30,7 @@ import {
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 const createCards = new Section({
     items: initialCards,
@@ -71,15 +72,16 @@ function renderProfilePopupInputs() {
 
 
 function submitProfileForm() {
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-
+    const obj = info.getUserInfo();
+    info.getUserInfo();
+    popupEdit.setInputValue(obj);
+    popupEdit.open();
 }
 
 function renderPlacePopupInputs() {
     placeInput.value = '';
     placeImageInput.value = '';
-    popupEdit.close()
+    popupAdd.close()
 }
 
 function submitPlaceForm(data) {
@@ -129,4 +131,8 @@ const popupAdd = new PopupWithForm(popupPlace, submitPlaceForm)
 popupAdd.setEventListeners();
 const popupEdit = new PopupWithForm(popupProfile, submitProfileForm)
 popupEdit.setEventListeners();
+const info = new UserInfo({
+    profileName: profileName,
+    profileJob: profileJob
+})
 
