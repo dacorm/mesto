@@ -71,21 +71,17 @@ function renderProfilePopupInputs() {
 // }
 
 
-function submitProfileForm() {
-    const obj = info.getUserInfo();
-    info.getUserInfo();
-    popupEdit.setInputValue(obj);
-    popupEdit.open();
+function submitProfileForm(obj) {
+    info.setUserInfo(obj)
 }
 
 function renderPlacePopupInputs() {
     placeInput.value = '';
     placeImageInput.value = '';
-    popupAdd.close()
 }
 
-function submitPlaceForm(data) {
-    const card = createCard(data)
+function submitPlaceForm(obj) {
+    const card = createCard(obj)
     createCards.addItem(card);
     popupAdd.close();
 }
@@ -121,6 +117,8 @@ placeAddButton.addEventListener('click', () => {
 //     }
 // }))
 
+
+
 const editFormValidation = new FormValidator(formProfileElement, validation);
 editFormValidation.enableValidaton();
 const addFormValidation = new FormValidator(placeForm, validation);
@@ -136,3 +134,4 @@ const info = new UserInfo({
     profileJob: profileJob
 })
 
+console.log(popupAdd);

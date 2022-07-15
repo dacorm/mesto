@@ -38,9 +38,9 @@
                 <h2 class="popup__form-title">Редактировать профиль</h2>
                 <fieldset class="form">
                     <label class="form__input-label">
-                    <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="name"
+                    <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="fullName"
                            name="name" minlength="2" maxlength="40" required>
-                    <span class="form__input-error name-error"></span>
+                    <span class="form__input-error fullName-error"></span>
                     </label>
                     <label class="form__input-label">
                     <input type="text" class="form__input" placeholder="Место работы" value="Исследователь океана"
@@ -59,14 +59,14 @@
                 <h2 class="popup__form-title">Новое место</h2>
                 <fieldset class="form">
                     <label class="form__input-label">
-                    <input type="text" class="form__input" placeholder="Название" id="newplace" name="new_place"
+                    <input type="text" class="form__input" placeholder="Название" id="name" name="new_place"
                            minlength="2" maxlength="30" required>
-                    <span class="form__input-error newplace-error"></span>
+                    <span class="form__input-error name-error"></span>
                     </label>
                     <label class="form__input-label">
-                    <input type="url" class="form__input" placeholder="Ссылка на картинку" id="placelink"
+                    <input type="url" class="form__input" placeholder="Ссылка на картинку" id="link"
                            name="place_link" required>
-                    <span class="form__input-error placelink-error"></span>
+                    <span class="form__input-error link-error"></span>
                     </label>
                 </fieldset>
                 <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Сохранить</button>
