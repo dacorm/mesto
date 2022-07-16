@@ -24,16 +24,14 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import './index.css';
 
-const createCards = new Section({
+const cardsList = new Section({
     items: initialCards,
     renderer: (data) => {
         const card = createCard(data);
-        createCards.addItem(card)
+        cardsList.addItem(card)
     }
 }, cardItems)
-createCards.renderItem()
-
-
+cardsList.renderItem()
 
 function createCard(data) {
     const card = new Card(data, '#card', openCard);
@@ -47,19 +45,18 @@ function openCard(title, src) {
     imagePopup.open(title, src)
 }
 
-
 function renderProfilePopupInputs() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
 }
 
-function submitProfileForm(obj) {
-    info.setUserInfo(obj)
+function submitProfileForm(userData) {
+    userInfo.setUserInfo(userData)
 }
 
 function submitPlaceForm(obj) {
     const card = createCard(obj)
-    createCards.addItem(card);
+    cardsList.addItem(card);
     popupAdd.close();
 }
 
@@ -74,9 +71,6 @@ placeAddButton.addEventListener('click', () => {
     addFormValidation.hideAllErrors();
 });
 
-
-
-
 const editFormValidation = new FormValidator(formProfileElement, validation);
 editFormValidation.enableValidaton();
 const addFormValidation = new FormValidator(placeForm, validation);
@@ -87,9 +81,7 @@ const popupAdd = new PopupWithForm(popupPlace, submitPlaceForm)
 popupAdd.setEventListeners();
 const popupEdit = new PopupWithForm(popupProfile, submitProfileForm)
 popupEdit.setEventListeners();
-const info = new UserInfo({
+const userInfo = new UserInfo({
     profileName: profileName,
     profileJob: profileJob
 })
-
-console.log(popupAdd);

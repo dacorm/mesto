@@ -28,7 +28,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
 .form__input::-webkit-input-placeholder {
     max-width: 358px;
@@ -36,7 +36,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
 
 
@@ -46,5 +46,5 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
