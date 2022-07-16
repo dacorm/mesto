@@ -799,7 +799,7 @@ template {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
 .form__input::-webkit-input-placeholder {
     max-width: 358px;
@@ -807,7 +807,7 @@ template {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
 
 
@@ -817,7 +817,7 @@ template {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    color: #000000;
+    color: #4d4d4d;
 }
 
 .popup {
