@@ -9,9 +9,3 @@
     cursor: pointer;
     opacity: .2;
 }
-
-@media screen and (max-width: 1023px) {
-    .profile__avatar-image {
-        margin: 0 0 20px 0;
-    }
-}

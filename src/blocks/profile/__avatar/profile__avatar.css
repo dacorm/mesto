@@ -9,3 +9,9 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
+@media screen and (max-width: 1023px) {
+    .profile__avatar {
+        margin: 0 0 20px 0;
+    }
+}
