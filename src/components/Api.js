@@ -4,7 +4,7 @@ class Api {
         this._headers = data.headers;
     }
 
-    handleResponse(res) {
+    _handleResponse(res) {
         if (res.ok) {
             return res.json();
         } else {
@@ -13,11 +13,11 @@ class Api {
     }
 
     getUserInfo() {
-        return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(this.handleResponse);
+        return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(this._handleResponse);
     }
 
     getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then(this.handleResponse);
+        return fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then(this._handleResponse);
     }
 
     setUserInfo(userInfo) {
@@ -28,7 +28,7 @@ class Api {
                 name: userInfo.fullName,
                 about: userInfo.workplace
             }),
-        }).then(this.handleResponse)
+        }).then(this._handleResponse)
     }
 
     addNewCard(data) {
@@ -36,14 +36,14 @@ class Api {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify(data),
-        }).then(this.handleResponse);
+        }).then(this._handleResponse);
     }
 
     deleteCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}`, {
             method: "DELETE",
             headers: this._headers,
-        }).then(this.handleResponse);
+        }).then(this._handleResponse);
     }
 
     changeAvatar(data) {
@@ -53,21 +53,21 @@ class Api {
             body: JSON.stringify({
                 avatar: data.avatar,
             }),
-        }).then(this.handleResponse);
+        }).then(this._handleResponse);
     }
 
     like(id) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: "PUT",
             headers: this._headers,
-        }).then(this.handleResponse);
+        }).then(this._handleResponse);
     }
 
     dislike(id) {
         return fetch(`${this._baseUrl}/cards/${id}/likes`, {
             method: "DELETE",
             headers: this._headers,
-        }).then(this.handleResponse);
+        }).then(this._handleResponse);
     }
 }
 

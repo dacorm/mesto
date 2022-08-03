@@ -27,7 +27,6 @@ import PopupConfirm from "../components/PopupConfirm";
 
 let userId;
 
-
 const cardsList = new Section({
     renderer: (data) => {
         const card = createCard(data);
