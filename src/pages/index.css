@@ -40,3 +40,6 @@
 @import url(../blocks/form/__input-error/_active/form__input-error_active.css);
 @import url(../blocks/form/__input-label/form__input-label.css);
 @import url(../blocks/popup/__save-button/_disabled/popup__save-button_disabled.css);
+@import url(../blocks/card/__item-like-counter/card__item-like-counter.css);
+@import url(../blocks/card/__item-like-container/card__item-like-container.css);
+@import url(../blocks/popup/__form-title/_confirm/popup__form-title_confirm.css);

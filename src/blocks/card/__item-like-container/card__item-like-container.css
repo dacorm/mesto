@@ -1,0 +1,6 @@
+.card__item-like-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 21px 0 0;
+    align-items: center;
+}

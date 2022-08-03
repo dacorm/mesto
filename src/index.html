@@ -38,14 +38,14 @@
                 <h2 class="popup__form-title">Редактировать профиль</h2>
                 <fieldset class="form">
                     <label class="form__input-label">
-                    <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="fullName"
-                           name="name" minlength="2" maxlength="40" required>
-                    <span class="form__input-error fullName-error"></span>
+                        <input type="text" class="form__input" placeholder="Ваше Имя" value="Жак-Ив Кусто" id="fullName"
+                               name="name" minlength="2" maxlength="40" required>
+                        <span class="form__input-error fullName-error"></span>
                     </label>
                     <label class="form__input-label">
-                    <input type="text" class="form__input" placeholder="Место работы" value="Исследователь океана"
-                           id="workplace" name="workplace" minlength="2" maxlength="200" required>
-                    <span class="form__input-error workplace-error"></span>
+                        <input type="text" class="form__input" placeholder="Место работы" value="Исследователь океана"
+                               id="workplace" name="workplace" minlength="2" maxlength="200" required>
+                        <span class="form__input-error workplace-error"></span>
                     </label>
                 </fieldset>
                 <button class="popup__save-button" type="submit">Сохранить</button>
@@ -59,14 +59,14 @@
                 <h2 class="popup__form-title">Новое место</h2>
                 <fieldset class="form">
                     <label class="form__input-label">
-                    <input type="text" class="form__input" placeholder="Название" id="name" name="new_place"
-                           minlength="2" maxlength="30" required>
-                    <span class="form__input-error name-error"></span>
+                        <input type="text" class="form__input" placeholder="Название" id="name" name="new_place"
+                               minlength="2" maxlength="30" required>
+                        <span class="form__input-error name-error"></span>
                     </label>
                     <label class="form__input-label">
-                    <input type="url" class="form__input" placeholder="Ссылка на картинку" id="link"
-                           name="place_link" required>
-                    <span class="form__input-error link-error"></span>
+                        <input type="url" class="form__input" placeholder="Ссылка на картинку" id="link"
+                               name="place_link" required>
+                        <span class="form__input-error link-error"></span>
                     </label>
                 </fieldset>
                 <button class="popup__save-button popup__save-button_disabled" type="submit" disabled>Сохранить</button>
@@ -81,6 +81,15 @@
             <h3 class="popup__image-description"></h3>
         </div>
     </div>
+    <div class="popup" id="popup_confirm">
+        <div class="popup__form-container">
+            <button class="popup__escape-button" id="confirm_close" type="button"></button>
+            <form class="popup__form" name="confirm_form" id="place_confirm" novalidate>
+                <h2 class="popup__form-title popup__form-title_confirm">Вы уверены?</h2>
+                <button class="popup__save-button" type="submit">Да</button>
+            </form>
+        </div>
+    </div>
 </div>
 <template id="card">
     <li class="card__item">
@@ -89,7 +98,10 @@
              class="card__item-image">
         <div class="card__item-description">
             <h2 class="card__item-title">Гора Эльбрус</h2>
-            <button class="card__item-like-button" type="button"></button>
+            <div class="card__item-like-container">
+                <button class="card__item-like-button" type="button"></button>
+                <p class="card__item-like-counter">0</p>
+            </div>
         </div>
     </li>
 </template>

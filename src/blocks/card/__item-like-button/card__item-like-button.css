@@ -1,8 +1,8 @@
 .card__item-like-button {
-    max-width: 22px;
+    width: 22px;
     height: 19px;
     margin: 0;
-    padding: 0 41px 0 0;
+    padding: 0;
     background-image: url("../../../images/like.svg");
     background-repeat: no-repeat;
     background-size: contain;
