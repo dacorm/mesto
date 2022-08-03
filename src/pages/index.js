@@ -3,19 +3,15 @@ import {FormValidator} from "../components/FormValidator.js";
 import {
     cardItems,
     formProfileElement,
-    initialCards,
     jobInput,
     nameInput,
     placeAddButton,
     placeForm,
-    placeImageInput,
-    placeInput,
     popupConfirm,
     popupImage,
     popupPlace,
     popupProfile,
     popupProfileOpenButton,
-    profileAvatar,
     profileJob,
     profileName,
     validation
@@ -27,6 +23,7 @@ import UserInfo from "../components/UserInfo.js";
 import Api from '../components/Api.js';
 import './index.css';
 import PopupConfirm from "../components/PopupConfirm";
+
 let userId;
 
 
@@ -40,11 +37,11 @@ const cardsList = new Section({
 function createCard(data) {
     const card = new Card(
         {
-            title: data.name,
-            image: data.link,
+            name: data.name,
+            link: data.link,
             likes: data.likes,
             userId,
-            // ownerId: data.owner._id,
+            ownerId: data.owner._id,
             id: data._id
         },
         '#card',
@@ -68,7 +65,7 @@ function createCard(data) {
             }
         },
         () => {
-            popupConfirm.open(card)
+            confirmPopup.open(card)
         }
     );
 
@@ -95,6 +92,7 @@ async function submitPlaceForm(data) {
 const confirmPopup = new PopupConfirm(popupConfirm, async (card) => {
     try {
         await api.deleteCard(card._id);
+        card.delete();
         confirmPopup.close();
     } catch (e) {
         console.warn(e)
@@ -107,13 +105,14 @@ popupEdit.setEventListeners();
 
 const userInfo = new UserInfo({
     profileNameSelector: '.profile__name',
-    profileJobSelector: '.profile__job',
+    profileJobSelector: '.profile__workplace',
     profileAvatarSelector: '.profile__avatar',
 })
 
 async function submitProfileForm(data) {
     popupEdit.renderLoading(true, 'Сохранение...')
     try {
+        console.log(data)
         const res = await api.setUserInfo(data);
         userInfo.setUserInfo(res);
         popupEdit.close();
@@ -141,16 +140,6 @@ function renderProfilePopupInputs() {
     jobInput.value = profileJob.textContent;
 }
 
-// function submitProfileForm(userData) {
-//     userInfo.setUserInfo(userData)
-// }
-
-// function submitPlaceForm(obj) {
-//     const card = createCard(obj)
-//     cardsList.addItem(card);
-//     popupAdd.close();
-// }
-
 placeAddButton.addEventListener('click', () => {
     popupAdd.open();
     addFormValidation.hideAllErrors();
@@ -174,7 +163,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, cards]) => {
         userId = userData._id;
         userInfo.setUserInfo(userData);
-
         cardsList.renderItems(cards.reverse());
     })
     .catch((e) => console.log(e));

@@ -71,9 +71,9 @@ export class Card {
     _isLiked() {
         this._likes.forEach((user) => {
             if (user._id === this._userId) {
-                this.addLike();
+                this.like();
             } else {
-                this.removeLike();
+                this.dislike();
             }
         });
     }
@@ -94,7 +94,7 @@ export class Card {
         this._likeCounter.textContent = `${res.likes.length}`;
     }
 
-    _handleDeleteClick() {
+    delete() {
         this._element.remove();
         this._element = null;
     }
