@@ -492,11 +492,27 @@ template {
         height: 50px;
     }
 }
-.profile__avatar {
+.profile__avatar-image {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+    transition: .3s linear;
+}
+
+.profile__avatar-image:hover {
+    cursor: pointer;
+    opacity: .2;
+}
+.profile__avatar {
+    width: 120px;
+    height: 120px;
+    background-image: url(a086f758840ae814ecde.svg);
+    display: flex;
     margin: 0 30px 0 0;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 @media screen and (max-width: 1023px) {
@@ -663,10 +679,10 @@ template {
     cursor: pointer;
 }
 .card__item-like-button {
-    max-width: 22px;
+    width: 22px;
     height: 19px;
     margin: 0;
-    padding: 0 41px 0 0;
+    padding: 0;
     background-image: url(87ed371465c7a6a1cd01.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -679,10 +695,9 @@ template {
     cursor: pointer;
 }
 .card__item-like-button_active {
-    max-width: 22px;
+    width: 22px;
     height: 19px;
     margin: 0;
-    padding: 0 41px 0 0;
     background-image: url(fe17a515669479b1e649.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -999,4 +1014,25 @@ template {
 }
 
 
+.card__item-like-counter {
+    width: 10px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    padding: 0;
+    margin: 3px 0 0 0;
+    color: #000000;
+}
+.card__item-like-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 21px 0 0;
+    align-items: center;
+}
+.popup__form-title_confirm {
+    padding: 0 0 38px 0;
+}
 
