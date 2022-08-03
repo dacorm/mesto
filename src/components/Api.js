@@ -25,8 +25,8 @@ class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                fullName: userInfo.name,
-                workplace: userInfo.about
+                name: userInfo.fullName,
+                about: userInfo.workplace
             }),
         }).then(this.handleResponse)
     }

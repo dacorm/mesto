@@ -1,12 +1,13 @@
 import {Card} from "../components/Card.js";
 import {FormValidator} from "../components/FormValidator.js";
 import {
+    avatarButton, avatarForm,
     cardItems,
     formProfileElement,
     jobInput,
     nameInput,
     placeAddButton,
-    placeForm,
+    placeForm, popupAvatar,
     popupConfirm,
     popupImage,
     popupPlace,
@@ -106,7 +107,7 @@ popupEdit.setEventListeners();
 const userInfo = new UserInfo({
     profileNameSelector: '.profile__name',
     profileJobSelector: '.profile__workplace',
-    profileAvatarSelector: '.profile__avatar',
+    profileAvatarSelector: '.profile__avatar-image',
 })
 
 async function submitProfileForm(data) {
@@ -131,6 +132,27 @@ popupProfileOpenButton.addEventListener('click', () => {
     editFormValidation.hideAllErrors();
 });
 
+const avatarPopup = new PopupWithForm(popupAvatar, submitAvatarChangeForm)
+avatarPopup.setEventListeners();
+
+async function submitAvatarChangeForm(data) {
+    avatarPopup.renderLoading(true, 'Сохранение...')
+    try {
+        const res = await api.changeAvatar(data);
+        userInfo.setAvatar(res);
+        avatarPopup.close();
+    } catch (e) {
+        console.warn(e)
+    } finally {
+        avatarPopup.renderLoading(false);
+    }
+}
+
+avatarButton.addEventListener('click', () => {
+    avatarPopup.open();
+    avatarFormValidation.hideAllErrors();
+})
+
 function openCard(title, src) {
     imagePopup.open(title, src)
 }
@@ -149,6 +171,8 @@ const editFormValidation = new FormValidator(formProfileElement, validation);
 editFormValidation.enableValidaton();
 const addFormValidation = new FormValidator(placeForm, validation);
 addFormValidation.enableValidaton();
+const avatarFormValidation = new FormValidator(avatarForm, validation);
+avatarFormValidation.enableValidaton();
 const imagePopup = new PopupWithImage(popupImage);
 imagePopup.setEventListeners();
 const api = new Api({
